@@ -51,7 +51,13 @@ namespace Homework_number_56
         {
             IEnumerable<dynamic> newSoldiers = GetNameAndRankSoldiers();
 
-            ShowSoldiers(newSoldiers);
+            foreach (var newSoldier in newSoldiers)
+            {
+                Console.WriteLine("Солдат:");
+                Console.WriteLine($"Имя : {newSoldier.Name}");
+                Console.WriteLine($"Звание: {newSoldier.Rank}");
+                Console.WriteLine();
+            }
         }
 
         public void ShowAllSoldiers()
@@ -73,17 +79,6 @@ namespace Homework_number_56
                 Console.WriteLine($"Оружие : {soldier.Arms}");
                 Console.WriteLine($"Звание: {soldier.Rank}");
                 Console.WriteLine($"Время службы в месяцах: {soldier.ServiceLife}");
-                Console.WriteLine();
-            }
-        }
-
-        private void ShowSoldiers(IEnumerable<dynamic> soldiers)
-        {
-            foreach (var soldier in soldiers)
-            {
-                Console.WriteLine("Солдат:");
-                Console.WriteLine($"Имя : {soldier.Name}");
-                Console.WriteLine($"Звание: {soldier.Rank}");
                 Console.WriteLine();
             }
         }
