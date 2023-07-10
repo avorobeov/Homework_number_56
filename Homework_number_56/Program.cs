@@ -16,7 +16,7 @@ namespace Homework_number_56
             Console.ReadKey();
             Console.Clear();
 
-            database.ShowNameAndRankSoldiers();
+            database.ShowSoldierAbbreviatedInformation();
 
             Console.ReadKey();
         }
@@ -47,9 +47,9 @@ namespace Homework_number_56
             Fill();
         }
 
-        public void ShowNameAndRankSoldiers()
+        public void ShowSoldierAbbreviatedInformation()
         {
-            IEnumerable<dynamic> newSoldiers = GetNameAndRankSoldiers();
+            var newSoldiers = from Soldier soldier in _soldiers select new { Name = soldier.Name, Rank = soldier.Rank };
 
             foreach (var newSoldier in newSoldiers)
             {
@@ -62,17 +62,7 @@ namespace Homework_number_56
 
         public void ShowAllSoldiers()
         {
-            ShowSoldiers(_soldiers);
-        }
-
-        private IEnumerable<dynamic> GetNameAndRankSoldiers()
-        {
-            return from Soldier soldier in _soldiers select new { Name = soldier.Name, Rank = soldier.Rank };
-        }
-
-        private void ShowSoldiers(List<Soldier> soldiers)
-        {
-            foreach (Soldier soldier in soldiers)
+            foreach (Soldier soldier in _soldiers)
             {
                 Console.WriteLine("Солдат:");
                 Console.WriteLine($"Имя : {soldier.Name}");
